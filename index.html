@@ -1,37 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tic Tac Toe • Modern</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="container">
     <header>
-      <h1>Tic Tac Toe</h1>
+      <h1>Modern Tic Tac Toe</h1>
+      <!-- <p class="subtitle">Play vs Computer or a Friend • Multiple styles • Light/Dark</p> -->
     </header>
-    
+
+    <section class="controls" aria-label="Game controls">
+      <div class="row">
+        <label class="control">
+          <span>Mode</span>
+          <select id="mode-select" aria-label="Game mode">
+            <option value="pvc" selected>Player vs Computer</option>
+            <option value="pvp">Player vs Player</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Difficulty</span>
+          <select id="difficulty-select" aria-label="AI difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Variant</span>
+          <select id="variant-select" aria-label="Game variant">
+            <option value="classic" selected>Classic</option>
+            <option value="limited">3 Pieces</option>
+          </select>
+        </label>
+      </div>
+      <div class="row actions">
+        <button id="new-game" class="btn primary" aria-label="Start new game">New Game</button>
+        <button id="undo-move" class="btn" aria-label="Undo last move">Undo</button>
+        <button id="reset-scores" class="btn danger" aria-label="Reset scores">Reset Scores</button>
+        <button id="hint-toggle" class="btn" aria-pressed="false" aria-label="Toggle removal hint">Removal Hint:
+          Off</button>
+        <button id="rules-btn" class="btn" aria-haspopup="dialog" aria-controls="rules-modal">Rules</button>
+        <button id="theme-toggle" class="btn ghost" aria-pressed="false" aria-label="Toggle theme">🌙 Dark</button>
+      </div>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite">X's turn</p>
+
     <!-- Game Board -->
-    <div class="board">
-      <div class="cell" id="cell-0"></div>
-      <div class="cell" id="cell-1"></div>
-      <div class="cell" id="cell-2"></div>
-      <div class="cell" id="cell-3"></div>
-      <div class="cell" id="cell-4"></div>
-      <div class="cell" id="cell-5"></div>
-      <div class="cell" id="cell-6"></div>
-      <div class="cell" id="cell-7"></div>
-      <div class="cell" id="cell-8"></div>
+    <div class="board" aria-label="Tic Tac Toe board">
+      <button class="cell" id="cell-0" aria-label="Cell 1" tabindex="0"></button>
+      <button class="cell" id="cell-1" aria-label="Cell 2" tabindex="0"></button>
+      <button class="cell" id="cell-2" aria-label="Cell 3" tabindex="0"></button>
+      <button class="cell" id="cell-3" aria-label="Cell 4" tabindex="0"></button>
+      <button class="cell" id="cell-4" aria-label="Cell 5" tabindex="0"></button>
+      <button class="cell" id="cell-5" aria-label="Cell 6" tabindex="0"></button>
+      <button class="cell" id="cell-6" aria-label="Cell 7" tabindex="0"></button>
+      <button class="cell" id="cell-7" aria-label="Cell 8" tabindex="0"></button>
+      <button class="cell" id="cell-8" aria-label="Cell 9" tabindex="0"></button>
     </div>
-    
+
     <!-- Scoreboard -->
-    <div class="scoreboard">
-      <p id="player-score">Player: 0</p>
-      <p id="computer-score">Computer: 0</p>
+    <div class="scoreboard" aria-label="Scoreboard">
+      <p id="score-x" class="score">X: 0</p>
+      <p id="score-tie" class="score">Ties: 0</p>
+      <p id="score-o" class="score">O: 0</p>
     </div>
   </div>
-  
+
+  <!-- Rules Modal -->
+  <div id="rules-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="rules-title" hidden>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="rules-title">How to Play</h2>
+        <button id="close-rules" class="btn icon" aria-label="Close rules">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>Take turns to place marks on a 3×3 grid. Get three in a row to win.</p>
+        <ul>
+          <li>Mode: Play vs Computer or locally against a friend.</li>
+          <li>Difficulty: Easy, Medium, or Hard (perfect play).</li>
+          <li>Variant: Classic or 3 Pieces (only three marks per player; oldest disappears).</li>
+          <li>Use Undo to revert the last move. Scores persist between rounds.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button id="close-rules-2" class="btn primary">Got it</button>
+      </div>
+    </div>
+    <div class="modal-backdrop"></div>
+  </div>
+
   <script src="script.js"></script>
 </body>
+
 </html>
