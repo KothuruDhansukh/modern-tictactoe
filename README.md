@@ -2,8 +2,7 @@
 
 Fast, accessible, and modern Tic Tac Toe with a polished UI, multiple game modes, difficulty levels, a strategic 3-piece variant, undo, and score persistence.
 
-Live demo: https://dhansukhkothuru.github.io/modern-tictactoe/
-
+Live demo: https://kothurudhansukh.github.io/modern-tictactoe/
 ## Features
 
 - Clean, modern UI with Light/Dark themes (persisted via localStorage)
